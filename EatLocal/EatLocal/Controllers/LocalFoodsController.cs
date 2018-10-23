@@ -145,6 +145,29 @@ namespace EatLocal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //Get
+        public IActionResult SearchByMonth()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SearchByMonth(int month)
+        {
+            if (month != 0)
+            {
+
+                var FoodByMonth = _context.LocalFood.Where(m => m.StartDate.Month <= month && m.EndDate.Month <= month);
+
+
+                return View("Index", FoodByMonth);
+            }
+            else
+            {
+                return View("Index");
+
+            }
+
+        }
         private bool LocalFoodExists(int id)
         {
             return _context.LocalFood.Any(e => e.FoodID == id);

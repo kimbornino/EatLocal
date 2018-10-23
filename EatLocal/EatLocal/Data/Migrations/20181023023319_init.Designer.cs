@@ -4,14 +4,16 @@ using EatLocal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EatLocal.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181023023319_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,25 +67,6 @@ namespace EatLocal.Data.Migrations
                     b.HasIndex("RecipeID");
 
                     b.ToTable("LocalFood");
-                });
-
-            modelBuilder.Entity("EatLocal.Models.LocalFoodRecipe", b =>
-                {
-                    b.Property<int>("LocalFoodRecipeID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("LocalFoodID");
-
-                    b.Property<int>("RecipeID");
-
-                    b.HasKey("LocalFoodRecipeID");
-
-                    b.HasIndex("LocalFoodID");
-
-                    b.HasIndex("RecipeID");
-
-                    b.ToTable("LocalFoodRecipe");
                 });
 
             modelBuilder.Entity("EatLocal.Models.MessageBoard", b =>
@@ -332,19 +315,6 @@ namespace EatLocal.Data.Migrations
                     b.HasOne("EatLocal.Models.Recipe")
                         .WithMany("LocalFoods")
                         .HasForeignKey("RecipeID");
-                });
-
-            modelBuilder.Entity("EatLocal.Models.LocalFoodRecipe", b =>
-                {
-                    b.HasOne("EatLocal.Models.LocalFood", "LocalFoods")
-                        .WithMany()
-                        .HasForeignKey("LocalFoodID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EatLocal.Models.Recipe", "Recipe")
-                        .WithMany()
-                        .HasForeignKey("RecipeID")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EatLocal.Models.Recipe", b =>
