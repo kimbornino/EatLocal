@@ -22,7 +22,8 @@ namespace EatLocal.Controllers
         // GET: LocalFoods
         public async Task<IActionResult> Index()
         {
-            return View(await _context.LocalFood.ToListAsync());
+            var SeasonalSelection = _context.LocalFood.Where(m => m.EndDate > DateTime.Now && m.StartDate < DateTime.Now);
+            return View(SeasonalSelection);
         }
 
         // GET: LocalFoods/Details/5
@@ -156,7 +157,7 @@ namespace EatLocal.Controllers
             if (month != 0)
             {
 
-                var FoodByMonth = _context.LocalFood.Where(m => m.StartDate.Month <= month && m.EndDate.Month <= month);
+                var FoodByMonth = _context.LocalFood.Where(m => m.StartDate.Month <= month && m.EndDate.Month >= month);
 
 
                 return View("Index", FoodByMonth);

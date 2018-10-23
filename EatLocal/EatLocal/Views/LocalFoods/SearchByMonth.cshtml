@@ -1,0 +1,15 @@
+﻿@{ using (Html.BeginForm())
+    {
+
+    <p>Enter One or Two Digit Month</p>
+    <form method="post" action="/LocalFoods/SearchByMonth">
+
+        <label for="month">month</label>
+        <input type="text" name="month" />
+
+        <br /><button type="submit">Submit</button>
+    </form>
+
+    <a asp-action="Index"> See a List of What's In Season now</a>
+        }
+    }
