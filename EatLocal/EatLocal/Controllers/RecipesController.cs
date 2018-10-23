@@ -7,16 +7,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EatLocal.Data;
 using EatLocal.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 
 namespace EatLocal.Controllers
 {
     public class RecipesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment he;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public RecipesController(ApplicationDbContext context)
+        public RecipesController(ApplicationDbContext context, IHostingEnvironment e, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            he = e;
+            _userManager = userManager;
+
         }
 
         // GET: Recipes
@@ -151,7 +161,34 @@ namespace EatLocal.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult UploadImage(IFormFile pic, int? id)
+        {
+            if (pic == null)
+            {
+                return View();
+            }
 
+            if (pic != null)
+            {
+                var fullPath = Path.Combine(he.WebRootPath, Path.GetFileName(pic.FileName));
+                var fileName = pic.FileName;
+                pic.CopyTo(new FileStream(fullPath, FileMode.Create));
+
+                string userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var recipe = _context.Recipe.Where(m => m.ApplicationUserId == userid).FirstOrDefault();
+
+                //var recipe = _context.Recipes.Where(m => m.ApplicationUserId == userid).FirstOrDefault();
+
+                recipe.Image = fileName;
+                _context.Update(recipe);
+                _context.SaveChangesAsync();
+
+                ViewBag.ProfileImage = recipe.Image;
+                ViewData["FileLocation"] = "/" + Path.GetFileName(pic.FileName);
+            }
+
+            return View();
+        }
 
         private bool RecipeExists(int id)
         {
