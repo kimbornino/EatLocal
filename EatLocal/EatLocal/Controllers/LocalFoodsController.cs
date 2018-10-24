@@ -169,6 +169,21 @@ namespace EatLocal.Controllers
             }
 
         }
+
+        public IActionResult SeeRecipes()
+        {
+            return View();
+        }
+
+        public IActionResult SeeRecipes(int? id)
+        {
+               
+
+                var recipes = _context.LocalFoodRecipe.Where(m => m.LocalFoodID == id);
+                
+                return View("Index", recipes);
+            
+        }
         private bool LocalFoodExists(int id)
         {
             return _context.LocalFood.Any(e => e.FoodID == id);
