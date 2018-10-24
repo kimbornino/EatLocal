@@ -14,10 +14,10 @@ namespace EatLocal.Models
 
         [ForeignKey("Ingredient")]
         public int LocalFoodID { get; set; }
-        public LocalFood LocalFoods { get; set; }
+        //public LocalFood LocalFoods { get; set; }
 
         [ForeignKey("Recipe")]
         public int RecipeID { get; set; }
-        public Recipe Recipe { get; set; }
+        //public Recipe Recipe { get; set; }
     }
 }

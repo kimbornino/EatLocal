@@ -161,6 +161,34 @@ namespace EatLocal.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Tag(int? id)
+        {
+            var tagModel = new TagModel();
+            tagModel.FoodList = new List<SelectListItem>();
+           var foodList =  _context.LocalFood.ToList();
+            foreach (var item in foodList)
+            {
+                tagModel.FoodList.Add(new SelectListItem { Text = item.FoodName, Value = item.FoodID.ToString()});
+            }
+            return View(tagModel);
+        }
+
+        [HttpPost]
+        public IActionResult Tag(TagModel tag, int id)
+        {
+            if (tag != null)
+            {
+                LocalFoodRecipe recipe = new LocalFoodRecipe();
+
+                recipe.RecipeID = id;
+                recipe.LocalFoodID = tag.FoodId;
+                
+                _context.LocalFoodRecipe.Add(recipe);
+                _context.SaveChanges();
+               
+            }
+            return RedirectToAction("Index");
+        }
         public IActionResult UploadImage(IFormFile pic, int? id)
         {
             if (pic == null)

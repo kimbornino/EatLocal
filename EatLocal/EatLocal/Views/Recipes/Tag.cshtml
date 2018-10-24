@@ -1,0 +1,19 @@
+﻿@model TagModel
+@{ using (Html.BeginForm())
+    {
+
+        <p>Tag Your Recipe with a Local Food</p>
+        
+        <form method="post"asp-controller="Recipe" asp-action="Tag">
+            <label for="tag">tag</label>
+            <select asp-for="FoodId"asp-items="@Model.FoodList"></select>
+
+            <br /><button type="submit">Submit</button>
+        </form>
+
+        <a asp-action="Details">Back to Recipe</a>
+    }
+}
+
+
+
