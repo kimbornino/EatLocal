@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EatLocal.Data;
 using EatLocal.Models;
+using System.Security.Claims;
 
 namespace EatLocal.Controllers
 {
@@ -49,7 +50,7 @@ namespace EatLocal.Controllers
         // GET: DailyMealPlans/Create
         public IActionResult Create()
         {
-            ViewData["ApplicationUserId"] = new SelectList(_context.Set<ApplicationUser>(), "Id", "Id");
+            //ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id");
             ViewData["RecipeID"] = new SelectList(_context.Recipe, "RecipeID", "RecipeID");
             return View();
         }
@@ -61,6 +62,9 @@ namespace EatLocal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MealPlanID,Date,DayOfWeek,RecipeID,ApplicationUserId")] DailyMealPlan dailyMealPlan)
         {
+ 
+            dailyMealPlan.ApplicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             if (ModelState.IsValid)
             {
                 _context.Add(dailyMealPlan);
@@ -156,6 +160,26 @@ namespace EatLocal.Controllers
             _context.DailyMealPlan.Remove(dailyMealPlan);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+        //get
+        public IActionResult SaveRecipe(int? id)
+        {
+            
+            return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult SaveRecipe(int? id, Recipe recipe)
+        {
+            if (id != null)
+            {
+                var recipeid = _context.Recipe.Where(m => m.RecipeID == recipe.RecipeID);
+                var dailyMealPlan = _context.DailyMealPlan.Where(m => m.MealPlanID == id).FirstOrDefault();
+         
+                _context.Update(recipeid);
+                _context.SaveChangesAsync();
+            }
+            return View();
         }
 
         private bool DailyMealPlanExists(int id)
