@@ -18,6 +18,7 @@ namespace EatLocal.Data
         public DbSet<EatLocal.Models.MessageBoard> MessageBoard { get; set; }
         public DbSet<EatLocal.Models.DailyMealPlan> DailyMealPlan { get; set; }
         public DbSet<EatLocal.Models.LocalFoodRecipe> LocalFoodRecipe { get; set; }
+        public DbSet<EatLocal.Models.LocalMarkets> LocalMarkets { get; set; }
         //do I need to add application user here?
     }
 }

@@ -1,0 +1,155 @@
+﻿@model IEnumerable<EatLocal.Models.LocalMarkets>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeasonOpen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeasonClose)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StreetAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CityStateZip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MondayStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MondayEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TuesdayStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TuesdayEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WednesayStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WednesdayEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThursdayStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThursdayEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FridayStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FridayEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaturdayStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaturdayEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SundayStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SundayEnd)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeasonOpen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeasonClose)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityStateZip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MondayStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MondayEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TuesdayStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TuesdayEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WednesayStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WednesdayEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThursdayStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThursdayEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FridayStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FridayEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaturdayStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaturdayEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SundayStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SundayEnd)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,130 @@
+﻿@model EatLocal.Models.LocalMarkets
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>LocalMarkets</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeasonOpen" class="control-label"></label>
+                <input asp-for="SeasonOpen" class="form-control" />
+                <span asp-validation-for="SeasonOpen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeasonClose" class="control-label"></label>
+                <input asp-for="SeasonClose" class="form-control" />
+                <span asp-validation-for="SeasonClose" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Link" class="control-label"></label>
+                <input asp-for="Link" class="form-control" />
+                <span asp-validation-for="Link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bio" class="control-label"></label>
+                <input asp-for="Bio" class="form-control" />
+                <span asp-validation-for="Bio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetAddress" class="control-label"></label>
+                <input asp-for="StreetAddress" class="form-control" />
+                <span asp-validation-for="StreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityStateZip" class="control-label"></label>
+                <input asp-for="CityStateZip" class="form-control" />
+                <span asp-validation-for="CityStateZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MondayStart" class="control-label"></label>
+                <input asp-for="MondayStart" class="form-control" />
+                <span asp-validation-for="MondayStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MondayEnd" class="control-label"></label>
+                <input asp-for="MondayEnd" class="form-control" />
+                <span asp-validation-for="MondayEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TuesdayStart" class="control-label"></label>
+                <input asp-for="TuesdayStart" class="form-control" />
+                <span asp-validation-for="TuesdayStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TuesdayEnd" class="control-label"></label>
+                <input asp-for="TuesdayEnd" class="form-control" />
+                <span asp-validation-for="TuesdayEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WednesayStart" class="control-label"></label>
+                <input asp-for="WednesayStart" class="form-control" />
+                <span asp-validation-for="WednesayStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WednesdayEnd" class="control-label"></label>
+                <input asp-for="WednesdayEnd" class="form-control" />
+                <span asp-validation-for="WednesdayEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThursdayStart" class="control-label"></label>
+                <input asp-for="ThursdayStart" class="form-control" />
+                <span asp-validation-for="ThursdayStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThursdayEnd" class="control-label"></label>
+                <input asp-for="ThursdayEnd" class="form-control" />
+                <span asp-validation-for="ThursdayEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FridayStart" class="control-label"></label>
+                <input asp-for="FridayStart" class="form-control" />
+                <span asp-validation-for="FridayStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FridayEnd" class="control-label"></label>
+                <input asp-for="FridayEnd" class="form-control" />
+                <span asp-validation-for="FridayEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SaturdayStart" class="control-label"></label>
+                <input asp-for="SaturdayStart" class="form-control" />
+                <span asp-validation-for="SaturdayStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SaturdayEnd" class="control-label"></label>
+                <input asp-for="SaturdayEnd" class="form-control" />
+                <span asp-validation-for="SaturdayEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SundayStart" class="control-label"></label>
+                <input asp-for="SundayStart" class="form-control" />
+                <span asp-validation-for="SundayStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SundayEnd" class="control-label"></label>
+                <input asp-for="SundayEnd" class="form-control" />
+                <span asp-validation-for="SundayEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

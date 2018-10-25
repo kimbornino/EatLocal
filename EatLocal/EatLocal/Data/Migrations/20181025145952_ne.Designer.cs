@@ -4,14 +4,16 @@ using EatLocal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EatLocal.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181025145952_ne")]
+    partial class ne
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,21 +94,21 @@ namespace EatLocal.Data.Migrations
 
                     b.Property<string>("CityStateZip");
 
-                    b.Property<int?>("FridayEnd");
+                    b.Property<int>("FridayEnd");
 
-                    b.Property<int?>("FridayStart");
+                    b.Property<int>("FridayStart");
 
                     b.Property<string>("Link");
 
-                    b.Property<int?>("MondayEnd");
+                    b.Property<int>("MondayEnd");
 
-                    b.Property<int?>("MondayStart");
+                    b.Property<int>("MondayStart");
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("SaturdayEnd");
+                    b.Property<int>("SaturdayEnd");
 
-                    b.Property<int?>("SaturdayStart");
+                    b.Property<int>("SaturdayStart");
 
                     b.Property<DateTime>("SeasonClose");
 
@@ -114,21 +116,21 @@ namespace EatLocal.Data.Migrations
 
                     b.Property<string>("StreetAddress");
 
-                    b.Property<int?>("SundayEnd");
+                    b.Property<int>("SundayEnd");
 
-                    b.Property<int?>("SundayStart");
+                    b.Property<int>("SundayStart");
 
-                    b.Property<int?>("ThursdayEnd");
+                    b.Property<int>("ThursdayEnd");
 
-                    b.Property<int?>("ThursdayStart");
+                    b.Property<int>("ThursdayStart");
 
-                    b.Property<int?>("TuesdayEnd");
+                    b.Property<int>("TuesdayEnd");
 
-                    b.Property<int?>("TuesdayStart");
+                    b.Property<int>("TuesdayStart");
 
-                    b.Property<int?>("WednesayStart");
+                    b.Property<int>("WednesayStart");
 
-                    b.Property<int?>("WednesdayEnd");
+                    b.Property<int>("WednesdayEnd");
 
                     b.HasKey("ID");
 
