@@ -204,24 +204,20 @@ namespace EatLocal.Controllers
         public async Task<IActionResult> Map(int? id)
         {
             {
-                if (id == null)
-                {
-                    //not sure how to revise this for Core.  This code should alert user in thr case there is no user logged in.
-                    //return HttpStatusCode.BadRequest;
-                }
+                
                 LocalMarkets localMarket = _context.LocalMarkets.Find(id);
                 if (localMarket == null)
                 {
                     return NotFound();
                 }
-                //ViewBag.ApplicationUserId = new SelectList(_context.Users, "Id", "UserRole", businessProfile.ApplicationUser);
-                ViewBag.CustomerAddress = localMarket.StreetAddress;
-                ViewBag.CustomerZip = localMarket.CityStateZip;
+                ViewBag.SteetAddress = localMarket.StreetAddress;
+                ViewBag.CityStateZip = localMarket.CityStateZip;
                 return View(localMarket);
             }
         }
+    
 
-        private bool LocalMarketsExists(int id)
+    private bool LocalMarketsExists(int id)
         {
             return _context.LocalMarkets.Any(e => e.ID == id);
         }
