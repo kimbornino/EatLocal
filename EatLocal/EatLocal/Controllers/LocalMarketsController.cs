@@ -22,12 +22,37 @@ namespace EatLocal.Controllers
         // GET: LocalMarkets
         public async Task<IActionResult> Index()
         {
+            //will filter search to only markets open this time of the year.
+            var openSeason = _context.LocalMarkets.Where(m => m.SeasonClose > DateTime.Now && m.SeasonOpen < DateTime.Now);
+
+            if (openSeason != null)
+            {
+                var day = DateTime.Now.DayOfWeek;
+                string stringDay = day.ToString();
+                var hour = DateTime.Now.Hour;
+                var intHour = Convert.ToInt32(hour);
+
+                if (stringDay == "Monday")
+                {
+                    var openNow = _context.LocalMarkets.Where(m => m.MondayStart < hour && m.MondayEnd < hour);
+                    return View(openNow);
+                }
+                //and so on and so forth
+
+
+                else
+                {
+                    return View(await _context.LocalMarkets.ToListAsync());
+
+                }
+            }
             return View(await _context.LocalMarkets.ToListAsync());
+
         }
 
         // GET: LocalMarkets/Details/5
         public async Task<IActionResult> Details(int? id)
-        {
+              {
             if (id == null)
             {
                 return NotFound();
@@ -134,6 +159,7 @@ namespace EatLocal.Controllers
             return View(localMarkets);
         }
 
+
         // POST: LocalMarkets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -143,6 +169,56 @@ namespace EatLocal.Controllers
             _context.LocalMarkets.Remove(localMarkets);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+
+        public IActionResult Weather()
+        {
+            return View();
+        }
+
+        //Get
+        public IActionResult SearchByMonth()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SearchByMonth(int month)
+        {
+            if (month != 0)
+            {
+
+                var FoodByMonth = _context.LocalFood.Where(m => m.StartDate.Month <= month && m.EndDate.Month >= month);
+
+
+                return View("Index", FoodByMonth);
+            }
+            else
+            {
+                return View("Index");
+
+            }
+
+        }
+
+        public async Task<IActionResult> Map(int? id)
+        {
+            {
+                if (id == null)
+                {
+                    //not sure how to revise this for Core.  This code should alert user in thr case there is no user logged in.
+                    //return HttpStatusCode.BadRequest;
+                }
+                LocalMarkets localMarket = _context.LocalMarkets.Find(id);
+                if (localMarket == null)
+                {
+                    return NotFound();
+                }
+                //ViewBag.ApplicationUserId = new SelectList(_context.Users, "Id", "UserRole", businessProfile.ApplicationUser);
+                ViewBag.CustomerAddress = localMarket.StreetAddress;
+                ViewBag.CustomerZip = localMarket.CityStateZip;
+                return View(localMarket);
+            }
         }
 
         private bool LocalMarketsExists(int id)
