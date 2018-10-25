@@ -29,7 +29,8 @@ namespace TodoApi.Controllers
             return _context.Markets.ToList();
         }
 
-        [HttpGet("{id}", Name = "GetTodo")]
+        [HttpGet("{id}", Name = "GetMarkets")]
+
         public ActionResult<Markets> GetById(long id)
         {
             var item = _context.Markets.Find(id);
@@ -45,7 +46,36 @@ namespace TodoApi.Controllers
             _context.Markets.Add(item);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetTodo", new { id = item.ID }, item);
+            return CreatedAtRoute("GetMarkets", new { id = item.ID }, item);
+        }
+        //[HttpPut("{id}")]
+        //public IActionResult Update(long id, Markets item)
+        //{
+        //    var markets = _context.Markets.Find(id);
+        //    if (markets == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    markets.IsComplete = item.IsComplete;
+        //    todo.Name = item.Name;
+
+        //    _context.TodoItems.Update(todo);
+        //    _context.SaveChanges();
+        //    return NoContent();
+        //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var markets = _context.Markets.Find(id);
+            if (markets == null)
+            {
+                return NotFound();
+            }
+
+            _context.Markets.Remove(markets);
+            _context.SaveChanges();
+            return NoContent();
         }
     }
 }
