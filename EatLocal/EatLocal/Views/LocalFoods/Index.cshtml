@@ -4,10 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2> Currently in Season</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New</a> <br/>
+    <br />
+    <a asp-action="SearchByMonth">Search by Month</a>
+
+
 </p>
 <table class="table">
     <thead>
@@ -21,9 +25,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.EndDate)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.FoodImage)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.NutritionalInfo)
             </th>
@@ -42,12 +46,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EndDate)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.FoodImage)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.NutritionalInfo)
+                
             </td>
+          @Html.HiddenFor(modelItem => item.FoodImage)
+            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.FoodID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.FoodID">Details</a> |
@@ -59,3 +66,6 @@
 }
     </tbody>
 </table>
+<div>
+    
+</div>

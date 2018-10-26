@@ -31,15 +31,17 @@
         <dt>
             @Html.DisplayNameFor(model => model.FoodImage)
         </dt>
-        <dd>
+        @*<dd>
             @Html.DisplayFor(model => model.FoodImage)
-        </dd>
+        </dd>*@
         <dt>
             @Html.DisplayNameFor(model => model.NutritionalInfo)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NutritionalInfo)
         </dd>
+        
+        @Html.HiddenFor(model => model.FoodImage)
     </dl>
 </div>
 
