@@ -215,6 +215,13 @@ namespace EatLocal.Controllers
                 return View(localMarket);
             }
         }
+
+        public async Task<IActionResult> AllPins()
+        {
+
+      
+            return View();
+        }
     
 
     private bool LocalMarketsExists(int id)

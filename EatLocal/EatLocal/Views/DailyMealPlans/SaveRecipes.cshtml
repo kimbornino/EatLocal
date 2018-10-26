@@ -1,0 +1,20 @@
+﻿
+@model SaveModel
+@{using (Html.BeginForm())
+    {
+<h3>Save a Recipe</h3>
+
+<form method="post" asp-controller="DailyMealPlan" asp-action="SaveRecipes">
+    <label for="saveRecipes">Save Recipes</label>
+    <select asp-for="RecipeId" asp-items="@Model.RecipeList"></select>
+
+    <br /><button type="submit">Submit</button>
+</form>
+
+<a asp-action="Details">Back to Recipe</a>
+        }
+    }
+
+
+
+        

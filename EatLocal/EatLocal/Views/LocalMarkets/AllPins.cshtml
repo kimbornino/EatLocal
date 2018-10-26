@@ -30,33 +30,31 @@
 
         function initMap() {
             geocoder = new google.maps.Geocoder();
-            var latlng = new google.maps.LatLng(-34.397, 150.644);
+            var latlng = new google.maps.LatLng(20, 1100);
+
             var mapOptions = {
                 zoom: 8,
                 center: latlng
             }
             map = new google.maps.Map(document.getElementById('map'), mapOptions);
             console.log('TEST');
-           
-            var streetName = "@ViewBag.StreetAddress";
-            var zip = "@ViewBag.CityStateZip";
-            var address = (streetName + " " + zip + " ");
 
-
-            geocoder.geocode({ 'address': address /*+ " " + zip */ }, function (results, status) {
-                if (status == 'OK') {
-                    map.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location
-                    });
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
+          
         }
+        var marker;
+        marker = [{ lat: 20, lng: 1100 }, { lat: 40, lng: 100}]
+
+        for (i = 0; i < marker.length; i++ ){
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            }
+         
+        
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=@($"{Key.key}")&callback=initMap"
             async defer></script>
 </body>
 </html>
+
+
