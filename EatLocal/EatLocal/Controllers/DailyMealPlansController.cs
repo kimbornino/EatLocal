@@ -50,9 +50,9 @@ namespace EatLocal.Controllers
         // GET: DailyMealPlans/Create
         public IActionResult Create()
         {
-            //ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id");
-            //ViewData["RecipeID"] = new SelectList(_context.Recipe, "RecipeID", "RecipeID");
-       
+            ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["RecipeID"] = new SelectList(_context.Recipe, "RecipeID", "RecipeID");
+
             return View();
         }
 
@@ -74,10 +74,7 @@ namespace EatLocal.Controllers
             }
             ViewData["ApplicationUserId"] = new SelectList(_context.Set<ApplicationUser>(), "Id", "Id", dailyMealPlan.ApplicationUserId);
             ViewData["RecipeID"] = new SelectList(_context.Recipe, "RecipeID", "RecipeID", dailyMealPlan.RecipeID);
-            
-                //new code
-               
-            
+           
             return View(dailyMealPlan);
         }
 
@@ -169,7 +166,7 @@ namespace EatLocal.Controllers
         //get
         public IActionResult SaveRecipes(int? id)
         {
-            var dailyMealPlan = _context.DailyMealPlan.FindAsync(id);
+            var dailyMealPlan = _context.DailyMealPlan.Find(id);
             var saveModel = new SaveModel();
             saveModel.RecipeList = new List<SelectListItem>();
             var recipeList = _context.Recipe.ToList();
@@ -184,13 +181,14 @@ namespace EatLocal.Controllers
         public IActionResult SaveRecipes(int? id, Recipe recipe)
 
         {
-            var mealplan = _context.DailyMealPlan.Where(m => m.MealPlanID == id).FirstOrDefault();
-            var updatedRecipe = _context.DailyMealPlan.Where(m => m.RecipeID == recipe.RecipeID);
+            
+            var dailyMealPlan = _context.DailyMealPlan.Where(m => m.MealPlanID == id).FirstOrDefault();
+            dailyMealPlan.RecipeID = recipe.RecipeID;
+            
+            _context.Update(dailyMealPlan);
+            _context.SaveChanges();
 
-            _context.Update(updatedRecipe);
-            _context.SaveChangesAsync();
-
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
 

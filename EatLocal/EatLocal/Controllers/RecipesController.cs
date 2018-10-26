@@ -58,6 +58,7 @@ namespace EatLocal.Controllers
         // GET: Recipes/Create
         public IActionResult Create()
         {
+
             ViewData["ApplicationUserId"] = new SelectList(_context.Set<ApplicationUser>(), "Id", "Id");
             return View();
         }
@@ -71,6 +72,8 @@ namespace EatLocal.Controllers
         {
             if (ModelState.IsValid)
             {
+                recipe.ApplicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
                 _context.Add(recipe);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
