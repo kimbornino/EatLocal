@@ -23,7 +23,9 @@ namespace EatLocal.Controllers
         // GET: DailyMealPlans
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.DailyMealPlan.Include(d => d.ApplicationUser).Include(d => d.Recipe);
+             var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var applicationDbContext = _context.DailyMealPlan.Where(m => m.ApplicationUserId == user);
             return View(await applicationDbContext.ToListAsync());
         }
 
