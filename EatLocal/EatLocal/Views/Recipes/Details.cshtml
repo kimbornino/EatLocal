@@ -29,7 +29,7 @@
         }(document, new Date(), "script", "rating-widget.com/"));</script>
     
     <div>
-        <h2>Details</h2>
+        <h3>Recipe Details</h3>
 
         <div>
             <h2>@Model.Name</h2>
@@ -87,9 +87,14 @@
                     @Html.HiddenFor(model => model.ApplicationUser.Id)
             </dl>
         </div>
-        <div class="rw-ui-container"></div>
+
 
         <img src="~/@Model.Image" height="250px" width="300px" />
+        <p>
+            <div class="rw-ui-container"></div>
+        </p>
+
+        
 
         <div>
             <a asp-action="UploadImage" asp-route-id="@Model.RecipeID">UploadImage</a> |
