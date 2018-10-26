@@ -194,6 +194,18 @@ namespace EatLocal.Controllers
         }
 
 
+        public IActionResult SeeRecipes(int? id)
+        {
+
+
+            var recipe = _context.Recipe.Where(m => m.RecipeID == id);
+
+
+            return RedirectToAction("Details", "Recipes", recipe);
+
+        }
+
+
         private bool DailyMealPlanExists(int id)
         {
             return _context.DailyMealPlan.Any(e => e.MealPlanID == id);
