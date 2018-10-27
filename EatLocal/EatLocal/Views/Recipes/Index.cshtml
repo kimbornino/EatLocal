@@ -8,6 +8,8 @@
 
 <p>
     <a asp-action="Create">Create New</a>
+    <br />
+    <a asp-action="RecipeByIngredient"> Search By Ingredient</a>
 </p>
 <table class="table">
     <thead>
@@ -75,6 +77,7 @@
                 <a asp-action="Details" asp-route-id="@item.RecipeID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.RecipeID">Delete</a> |
                 <a asp-action="Tag" asp-route-id="@item.RecipeID">Tag</a>
+                
             </td>
         </tr>
 }

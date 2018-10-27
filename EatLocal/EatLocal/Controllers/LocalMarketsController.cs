@@ -57,6 +57,7 @@ namespace EatLocal.Controllers
                 {
                     
                     var openNow = _context.LocalMarkets.Where(m => m.FridayStart != null);
+
                     
                     return View(openNow);
                 }

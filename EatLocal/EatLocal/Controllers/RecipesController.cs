@@ -220,7 +220,23 @@ namespace EatLocal.Controllers
 
             return View();
         }
-
+        public IActionResult RecipeByIngredient()
+        {
+            var tagModel = new TagModel();
+            tagModel.FoodList = new List<SelectListItem>();
+            var foodList = _context.LocalFood.ToList();
+            foreach (var item in foodList)
+            {
+                tagModel.FoodList.Add(new SelectListItem { Text = item.FoodName, Value = item.FoodID.ToString() });
+            }
+            return View(tagModel);
+        }
+        [HttpPost]
+        public IActionResult RecipeByIngredient(TagModel tag, int id)
+        {
+            var foundMatches = _context.LocalFoodRecipe.Where(m => m.LocalFoodID == id);
+            return RedirectToAction("Index", foundMatches);
+                }
         private bool RecipeExists(int id)
         {
             return _context.Recipe.Any(e => e.RecipeID == id);
