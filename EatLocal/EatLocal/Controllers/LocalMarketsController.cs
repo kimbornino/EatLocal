@@ -24,6 +24,7 @@ namespace EatLocal.Controllers
         {
             //will filter search to only markets open this time of the year.
             var openSeason = _context.LocalMarkets.Where(m => m.SeasonClose > DateTime.Now && m.SeasonOpen < DateTime.Now);
+            
 
             if (openSeason != null)
             {
@@ -34,10 +35,41 @@ namespace EatLocal.Controllers
 
                 if (stringDay == "Monday")
                 {
-                    var openNow = _context.LocalMarkets.Where(m => m.MondayStart < hour && m.MondayEnd < hour);
+                    var openNow = _context.LocalMarkets.Where(m => m.MondayStart != null);
                     return View(openNow);
                 }
-                //and so on and so forth
+                if (stringDay == "Tuesday")
+                {
+                    var openNow = _context.LocalMarkets.Where(m => m.TuesdayStart < hour && m.TuesdayEnd < hour);
+                    return View(openNow);
+                }
+                if (stringDay == "Wednesday")
+                {
+                    var openNow = _context.LocalMarkets.Where(m => m.WednesayStart < hour && m.WednesdayEnd < hour);
+                    return View(openNow);
+                }
+                if (stringDay == "Thursday")
+                {
+                    var openNow = _context.LocalMarkets.Where(m => m.ThursdayStart < hour && m.ThursdayEnd < hour);
+                    return View(openNow);
+                }
+                if (stringDay == "Friday")
+                {
+                    
+                    var openNow = _context.LocalMarkets.Where(m => m.FridayStart != null);
+                    
+                    return View(openNow);
+                }
+                if (stringDay == "Saturday")
+                {
+                    var openNow = _context.LocalMarkets.Where(m => m.SaturdayStart < hour && m.SaturdayEnd < hour);
+                    return View(openNow);
+                }
+                if (stringDay == "Sunday")
+                {
+                    var openNow = _context.LocalMarkets.Where(m => m.SundayStart < hour && m.SundayEnd < hour);
+                    return View(openNow);
+                }
 
 
                 else
@@ -46,13 +78,16 @@ namespace EatLocal.Controllers
 
                 }
             }
-            return View(await _context.LocalMarkets.ToListAsync());
+            else
+            {
+                return View(await _context.LocalMarkets.ToListAsync());
 
+            }
         }
 
         // GET: LocalMarkets/Details/5
         public async Task<IActionResult> Details(int? id)
-              {
+        {
             if (id == null)
             {
                 return NotFound();
@@ -204,7 +239,7 @@ namespace EatLocal.Controllers
         public async Task<IActionResult> Map(int? id)
         {
             {
-                
+
                 LocalMarkets localMarket = _context.LocalMarkets.Find(id);
                 if (localMarket == null)
                 {
@@ -216,15 +251,33 @@ namespace EatLocal.Controllers
             }
         }
 
-        public async Task<IActionResult> AllPins()
+        //public async Task<IActionResult> AllPins()
+        //{
+        //    var weekday = "Monday";
+        //    var hour = 4;
+
+        //    if (weekday == "Monday")
+        //    {
+        //        var mondayStart = _context.LocalMarkets.Where(m => m.MondayStart < hour);
+        //        var mondayEnd = _context.LocalMarkets.Where(m => m.MondayEnd > hour);
+
+
+
+
+        //        return View("Index");
+        //    }
+        //}
+
+   
+
+        public IActionResult ViewOpenMarkets(string day, string hour)
         {
-
-      
-            return View();
+            return RedirectToAction("Index");
         }
-    
 
-    private bool LocalMarketsExists(int id)
+   
+        
+        private bool LocalMarketsExists(int id)
         {
             return _context.LocalMarkets.Any(e => e.ID == id);
         }
