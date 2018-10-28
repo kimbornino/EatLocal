@@ -21,6 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Recipe)
             </th>
+           
             @*<th>
                 @Html.DisplayNameFor(model => model.ApplicationUser)
             </th>*@
@@ -37,8 +38,9 @@
                 @Html.DisplayFor(modelItem => item.DayOfWeek)
             </td>
             <td>
-                <a asp-action="Details" asp-controller="Recipes" asp-route-id="@item.RecipeID"> Recipe </a>
+                <a asp-action="Details" asp-controller="Recipes" asp-route-id="@item.RecipeID">"@ViewBag.Name" </a>
             </td>
+         
 
             @*<td>
             @Html.DisplayFor(modelItem => item.ApplicationUser.Id)

@@ -186,7 +186,11 @@ namespace EatLocal.Controllers
             
             var dailyMealPlan = _context.DailyMealPlan.Where(m => m.MealPlanID == id).FirstOrDefault();
             dailyMealPlan.RecipeID = recipe.RecipeID;
-            
+
+            var fullRecipe = _context.Recipe.Where(m => m.RecipeID == recipe.RecipeID).FirstOrDefault();
+
+            ViewBag.Name = fullRecipe.Name;
+
             _context.Update(dailyMealPlan);
             _context.SaveChanges();
 
