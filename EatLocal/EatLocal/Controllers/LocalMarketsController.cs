@@ -33,66 +33,56 @@ namespace EatLocal.Controllers
                 var hour = DateTime.Now.Hour;
                 var intHour = Convert.ToInt32(hour);
 
+
                 if (stringDay == "Monday")
                 {
-                    var openNow = _context.LocalMarkets.Where(m => m.MondayStart != null);
-                    return View(openNow);
+                    var openNow = _context.LocalMarkets.Where(m => m.MondayStart < hour && m.MondayEnd > hour);
+                    return View("Index", openNow);
                 }
+
                 if (stringDay == "Tuesday")
                 {
-                    var openNow = _context.LocalMarkets.Where(m => m.TuesdayStart < hour && m.TuesdayEnd < hour);
-                    return View(openNow);
+                    var openNow = _context.LocalMarkets.Where(m => m.TuesdayStart < hour && m.TuesdayEnd > hour);
+                    return View("Index", openNow);
                 }
+
                 if (stringDay == "Wednesday")
                 {
-                    var openNow = _context.LocalMarkets.Where(m => m.WednesayStart < hour && m.WednesdayEnd < hour);
-                    return View(openNow);
+                    var openNow = _context.LocalMarkets.Where(m => m.WednesayStart < hour && m.WednesdayEnd > hour);
+                    return View("Index", openNow);
                 }
+
                 if (stringDay == "Thursday")
                 {
-                    var openNow = _context.LocalMarkets.Where(m => m.ThursdayStart < hour && m.ThursdayEnd < hour);
-                    return View(openNow);
+                    var openNow = _context.LocalMarkets.Where(m => m.ThursdayStart < hour && m.ThursdayEnd > hour);
+                    return View("Index", openNow);
                 }
-                //if (stringDay == "Friday")
-                //{
-                    
-                //    var openNow = _context.LocalMarkets.Where(m => m.FridayStart != null);
-                //    g IEnumerable<recipes>
-                //    foreach (var market in openNow)
-                //    {
-                //        var isOpen = _context.LocalMarkets.Where(m => m.FridayStart < hour);
-                     
-                //            market += isOpen;
-                        
-                //    }
-                    
-                //    //return View(openNow);
-                //}
+
+                if (stringDay == "Friday")
+                {
+                    var openNow = _context.LocalMarkets.Where(m => m.FridayStart < hour && m.FridayEnd > hour);
+                    return View("Index", openNow);
+                }
+
                 if (stringDay == "Saturday")
                 {
                     var openNow = _context.LocalMarkets.Where(m => m.SaturdayStart < hour && m.SaturdayEnd > hour);
-
-
-
-                    return View(openNow);
+                    return View("Index", openNow);
                 }
+
                 if (stringDay == "Sunday")
                 {
                     var openNow = _context.LocalMarkets.Where(m => m.SundayStart < hour && m.SundayEnd > hour);
-                    return View(openNow);
+                    return View("Index", openNow);
                 }
-
-
                 else
                 {
-                    return View(await _context.LocalMarkets.ToListAsync());
-
+                    return View();
                 }
             }
             else
             {
-                return View(await _context.LocalMarkets.ToListAsync());
-
+                return View();
             }
         }
 

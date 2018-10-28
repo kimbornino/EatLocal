@@ -14,6 +14,7 @@ namespace EatLocal.Models
 
         public DateTime Date { get; set; }
 
+        [Display(Name="Day")]
         public string DayOfWeek { get; set; }
 
         [ForeignKey("Recipe")]

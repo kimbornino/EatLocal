@@ -13,17 +13,22 @@ namespace EatLocal.Models
 
             public string Name { get; set; }
 
+            [Display(Name="Season Start Date")]
             public DateTime SeasonOpen { get; set; }
 
+            [Display(Name="Season Close Date")]
             public DateTime SeasonClose { get; set; }
 
             public string Link { get; set; }
 
+            [Display(Name="Market Information")]
             public string Bio { get; set; }
 
+            [Display(Name="Street Address")]
             public string StreetAddress { get; set; }
 
-            public string CityStateZip { get; set; }
+             [Display(Name = "City, State, Zip")]
+             public string CityStateZip { get; set; }
 
             public int? MondayStart { get; set; }
 
