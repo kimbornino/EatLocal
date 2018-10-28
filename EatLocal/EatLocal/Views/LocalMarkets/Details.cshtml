@@ -32,7 +32,9 @@
             @Html.DisplayNameFor(model => model.Link)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Link)
+            <a href="@Model.Link" target="_blank">
+                @Model.Link
+            </a>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Bio)
@@ -52,7 +54,7 @@
         <dd>
             @Html.DisplayFor(model => model.CityStateZip)
         </dd>
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.MondayStart)
         </dt>
         <dd>
@@ -129,16 +131,34 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.SundayStart)
-        </dd>
-        <dt>
+        </dd>*@
+        @*<dt>
             @Html.DisplayNameFor(model => model.SundayEnd)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.SundayEnd)
-        </dd>
+        </dd>*@
     </dl>
+    @Html.HiddenFor(model => model.MondayStart)
+    @Html.HiddenFor(model => model.TuesdayStart)
+    @Html.HiddenFor(model => model.WednesayStart)
+    @Html.HiddenFor(model => model.ThursdayStart)
+    @Html.HiddenFor(model => model.FridayStart)
+    @Html.HiddenFor(model => model.SaturdayStart) 
+    @Html.HiddenFor(model => model.SundayStart)
+    @Html.HiddenFor(model => model.MondayEnd)
+    @Html.HiddenFor(model => model.TuesdayEnd)
+    @Html.HiddenFor(model => model.WednesdayEnd)
+    @Html.HiddenFor(model => model.ThursdayEnd)
+    @Html.HiddenFor(model => model.FridayEnd)
+    @Html.HiddenFor(model => model.SaturdayEnd)
+    @Html.HiddenFor(model => model.SundayEnd)
+    
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a> |
+    <br/>
+    <br/>
+    <a asp-action="Map" asp-route-id="@Model.ID">See Market's Location</a> 
 </div>

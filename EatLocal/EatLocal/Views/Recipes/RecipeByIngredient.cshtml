@@ -5,6 +5,7 @@
         <p>Tag Your Recipe with a Local Food</p>
 
         <form method="post" asp-controller="Recipe" asp-action="SeacrchByIngredient">
+            
             <label for="tag">tag</label>
             <select asp-for="FoodId" asp-items="@Model.FoodList"></select>
 

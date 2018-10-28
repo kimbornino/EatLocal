@@ -1,8 +1,25 @@
 ﻿
-@{
-    ViewData["Title"] = "ViewOpenMarkets";
-    Layout = "ViewOpenMarkets";
-}
+@using (Html.BeginForm())
+    {
+    <br/>
+    <br/>
+    <form method="post" action="/LocalFoods/ViewOpenMarkets">
 
-<h2>ViewOpenMarkets</h2>
+        <label for="day">day</label>
+        <select id="day" , name="day">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+        </select>
 
+        <input id="hour" name="hour" type="text" />
+        
+        <br /><button type="submit">Submit</button>
+    </form>
+        }
+
+    

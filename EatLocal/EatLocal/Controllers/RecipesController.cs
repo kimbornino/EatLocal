@@ -232,10 +232,13 @@ namespace EatLocal.Controllers
             return View(tagModel);
         }
         [HttpPost]
-        public IActionResult RecipeByIngredient(TagModel tag, int id)
+        public IActionResult RecipeByIngredient(TagModel tag)
         {
-            var foundMatches = _context.LocalFoodRecipe.Where(m => m.LocalFoodID == id);
-            return RedirectToAction("Index", foundMatches);
+            var foundMatches = _context.LocalFoodRecipe.Where(m => m.LocalFoodID == tag.FoodId);
+            var recipes = foundMatches.Join(_context.Recipe, recipe => recipe.RecipeID, moreRecipe => moreRecipe.RecipeID, (localFoodRecipe, recipeObject) => recipeObject);
+               
+
+            return View("FilteredRecipeIndex", recipes); 
                 }
         private bool RecipeExists(int id)
         {
