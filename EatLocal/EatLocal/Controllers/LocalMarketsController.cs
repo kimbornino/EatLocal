@@ -278,14 +278,61 @@ namespace EatLocal.Controllers
         [HttpPost]
         public IActionResult ViewOpenMarkets(string day, int hour)
         {
-
+            if (day == "Monday")
+            {
+                var openNow = _context.LocalMarkets.Where(m => m.MondayStart < hour && m.MondayEnd > hour);
+                return View("Index", openNow);
+            }
+        
+            if (day == "Tuesday")
+            {
+                var openNow = _context.LocalMarkets.Where(m => m.TuesdayStart < hour && m.TuesdayEnd > hour);
+                return View("Index", openNow);
+            }
+         
+            if (day == "Wednesday")
+            {
+                var openNow = _context.LocalMarkets.Where(m => m.WednesayStart < hour && m.WednesdayEnd > hour);
+                return View("Index", openNow);
+            }
+           
+            if (day == "Thursday")
+            {
+                var openNow = _context.LocalMarkets.Where(m => m.ThursdayStart < hour && m.ThursdayEnd > hour);
+                return View("Index", openNow);
+            }
+           
+            if (day == "Friday")
+            {
+                var openNow = _context.LocalMarkets.Where(m => m.FridayStart < hour && m.FridayEnd > hour);
+                return View("Index", openNow);
+            }
+           
             if (day == "Saturday")
             {
                 var openNow = _context.LocalMarkets.Where(m => m.SaturdayStart < hour && m.SaturdayEnd > hour);
                 return View("Index", openNow);
             }
-            return View();
+       
+            if (day == "Sunday")
+            {
+                var openNow = _context.LocalMarkets.Where(m => m.SundayStart < hour && m.SundayEnd > hour);
+                return View("Index", openNow);
+            }
+            else
+            {
+                return View();
+            }
+     
         }
+
+        public IActionResult SeeAll ()
+        {
+            var markets = _context.LocalMarkets.ToList();
+           
+            return View("Index", markets);
+        }
+
         private bool LocalMarketsExists(int id)
         {
             return _context.LocalMarkets.Any(e => e.ID == id);
