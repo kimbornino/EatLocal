@@ -49,7 +49,10 @@
                 @Html.DisplayFor(modelItem => item.SeasonClose)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Link)
+                @*@Html.DisplayFor(modelItem => item.Link)*@
+                <a href="@Html.DisplayFor(modelItem => item.Link)" target="_blank">
+                    @Html.DisplayFor(modelItem => item.Link)
+                </a>
             </td>
           <td>
                 @Html.DisplayFor(modelItem => item.StreetAddress)
