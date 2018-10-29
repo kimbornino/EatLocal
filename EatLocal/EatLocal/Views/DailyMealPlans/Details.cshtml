@@ -22,19 +22,23 @@
         <dd>
             @Html.DisplayFor(model => model.DayOfWeek)
         </dd>
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Recipe)
-        </dt>
-        <dd>
+        </dt>*@
+
+        @*<dd>
             @Html.DisplayFor(model => model.Recipe.RecipeID)
-        </dd>
-        <dt>
+        </dd>*@
+        @*<dt>
             @Html.DisplayNameFor(model => model.ApplicationUser)
-        </dt>
-        <dd>
+        </dt>*@
+        @*<dd>
             @Html.DisplayFor(model => model.ApplicationUser.Id)
-        </dd>
-    </dl>
+        </dd>*@
+        </dl>
+        @Html.DisplayFor(model => model.ApplicationUser.Id)
+        @Html.DisplayFor(model => model.Recipe.RecipeID)
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.MealPlanID">Edit</a> |

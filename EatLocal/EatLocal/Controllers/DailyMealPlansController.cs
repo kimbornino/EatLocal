@@ -25,7 +25,7 @@ namespace EatLocal.Controllers
         {
              var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var applicationDbContext = _context.DailyMealPlan.Where(m => m.ApplicationUserId == user);
+            var applicationDbContext = _context.DailyMealPlan.Where(m => m.ApplicationUserId == user).Include(m => m.Recipe);
             return View(await applicationDbContext.ToListAsync());
         }
 

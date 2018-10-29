@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2 align: center>Your Meal Planner</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -22,6 +22,7 @@
                 @Html.DisplayNameFor(model => model.Recipe)
             </th>
            
+           
             @*<th>
                 @Html.DisplayNameFor(model => model.ApplicationUser)
             </th>*@
@@ -38,9 +39,10 @@
                 @Html.DisplayFor(modelItem => item.DayOfWeek)
             </td>
             <td>
-                <a asp-action="Details" asp-controller="Recipes" asp-route-id="@item.RecipeID">"@ViewBag.Name" </a>
+                <a asp-action="Details" asp-controller="Recipes" asp-route-id="@item.RecipeID">@item.Recipe.Name</a>
             </td>
-         
+      
+
 
             @*<td>
             @Html.DisplayFor(modelItem => item.ApplicationUser.Id)
@@ -49,8 +51,9 @@
 
             <td>
                 <a asp-action="Edit" asp-route-id="@item.MealPlanID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MealPlanID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MealPlanID">Delete</a>
+                @*<a asp-action="Details" asp-route-id="@item.MealPlanID">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.MealPlanID">Delete</a> |
+                <a asp-action="SaveRecipes" asp-route-id="@item.MealPlanID"> Save/Change Recipe</a>
             </td>
 
         </tr>
