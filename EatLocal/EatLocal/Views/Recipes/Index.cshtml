@@ -29,9 +29,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Servings)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.NutritionalInfo)
-            </th>
+            </th>*@
             @*<th>
                 @Html.DisplayNameFor(model => model.Image)
             </th>
@@ -59,9 +59,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Servings)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.NutritionalInfo)
-            </td>
+            </td>*@
             @*<td>
                 @Html.DisplayFor(modelItem => item.Image)
             </td>*@
@@ -71,6 +71,7 @@
             @Html.HiddenFor(modelItem => item.ApplicationUserId)
             @Html.HiddenFor(modelItem => item.Image)
             @Html.HiddenFor(modelItem => item.Directions)
+            @Html.HiddenFor(modelItem => item.NutritionalInfo)
 
             <td>
                 <a asp-action="Edit" asp-route-id="@item.RecipeID">Edit</a> |
