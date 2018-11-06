@@ -3,11 +3,11 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h2>Details</h2>
+<br/>
+<h2 align="center">@Model.Name</h2>
 
 <div>
-    <h4>LocalMarkets</h4>
+ 
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -54,90 +54,7 @@
         <dd>
             @Html.DisplayFor(model => model.CityStateZip)
         </dd>
-        @*<dt>
-            @Html.DisplayNameFor(model => model.MondayStart)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MondayStart)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MondayEnd)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MondayEnd)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TuesdayStart)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TuesdayStart)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TuesdayEnd)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TuesdayEnd)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.WednesayStart)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.WednesayStart)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.WednesdayEnd)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.WednesdayEnd)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ThursdayStart)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ThursdayStart)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ThursdayEnd)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ThursdayEnd)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FridayStart)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FridayStart)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FridayEnd)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FridayEnd)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SaturdayStart)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SaturdayStart)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SaturdayEnd)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SaturdayEnd)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SundayStart)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SundayStart)
-        </dd>*@
-        @*<dt>
-            @Html.DisplayNameFor(model => model.SundayEnd)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SundayEnd)
-        </dd>*@
+       
     </dl>
     @Html.HiddenFor(model => model.MondayStart)
     @Html.HiddenFor(model => model.TuesdayStart)
@@ -156,8 +73,8 @@
     
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a> |
+
+    <a asp-action="Index">Back to List</a> 
     <br/>
     <br/>
     <a asp-action="Map" asp-route-id="@Model.ID">See Market's Location</a> 

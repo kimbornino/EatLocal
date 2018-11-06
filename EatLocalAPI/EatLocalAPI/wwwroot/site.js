@@ -1,11 +1,11 @@
-﻿const uri = 'api/todo';
+﻿const uri = 'EatLocalAPI/markets';
 let todos = null;
 function getCount(data) {
     const el = $('#counter');
-    let name = 'to-do';
+    let name = 'market';
     if (data) {
         if (data > 1) {
-            name = 'to-dos';
+            name = 'market';
         }
         el.text(data + ' ' + name);
     } else {
@@ -22,7 +22,7 @@ function getData() {
         type: 'GET',
         url: uri,
         success: function (data) {
-            $('#todos').empty();
+            $('#market').empty();
             getCount(data.length);
             $.each(data, function (key, item) {
                 const checked = item.isComplete ? 'checked' : '';
@@ -34,7 +34,7 @@ function getData() {
                     '</tr>').appendTo($('#todos'));
             });
 
-            todos = data;
+            market = data;
         }
     });
 }
@@ -72,7 +72,7 @@ function deleteItem(id) {
 }
 
 function editItem(id) {
-    $.each(todos, function (key, item) {
+    $.each(market, function (key, item) {
         if (item.id === id) {
             $('#edit-name').val(item.name);
             $('#edit-id').val(item.id);

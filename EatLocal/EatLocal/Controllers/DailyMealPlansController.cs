@@ -52,8 +52,8 @@ namespace EatLocal.Controllers
         // GET: DailyMealPlans/Create
         public IActionResult Create()
         {
-            ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["RecipeID"] = new SelectList(_context.Recipe, "RecipeID", "RecipeID");
+            // ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["RecipeID"] = new SelectList(_context.Recipe, "RecipeID", "Name");
 
             return View();
         }

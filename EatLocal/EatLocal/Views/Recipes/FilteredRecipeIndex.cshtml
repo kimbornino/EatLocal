@@ -23,21 +23,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Ingreients)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Directions)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Servings)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NutritionalInfo)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicationUser)
-            </th>*@
+          
             <th></th>
         </tr>
     </thead>
@@ -53,21 +45,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Ingreients)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Directions)
-            </td>*@
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Servings)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NutritionalInfo)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.ApplicationUser.Id)
-            </td>*@
+         
             @Html.HiddenFor(modelItem => item.ApplicationUserId)
             @Html.HiddenFor(modelItem => item.Image)
             @Html.HiddenFor(modelItem => item.Directions)

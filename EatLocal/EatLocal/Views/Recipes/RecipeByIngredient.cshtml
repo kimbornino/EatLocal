@@ -1,12 +1,14 @@
 ﻿@model TagModel
 @{ using (Html.BeginForm())
     {
-
-        <p>Tag Your Recipe with a Local Food</p>
+        <br />
+        <br/>
+        <br/>
+        <p>Select the Food You'd Like to Search</p>
 
         <form method="post" asp-controller="Recipe" asp-action="SeacrchByIngredient">
             
-            <label for="tag">tag</label>
+            <label for="tag">Local Food</label>
             <select asp-for="FoodId" asp-items="@Model.FoodList"></select>
 
             <br /><button type="submit">Submit</button>

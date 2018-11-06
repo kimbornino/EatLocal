@@ -208,8 +208,6 @@ namespace EatLocal.Controllers
                 string userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var recipe = _context.Recipe.Where(m => m.ApplicationUserId == userid).FirstOrDefault();
 
-                //var recipe = _context.Recipes.Where(m => m.ApplicationUserId == userid).FirstOrDefault();
-
                 recipe.Image = fileName;
                 _context.Update(recipe);
                 _context.SaveChangesAsync();
